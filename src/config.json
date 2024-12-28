@@ -1,0 +1,37 @@
+{
+  "start": {
+    "text": "You find yourself in a dark forest. What will you do?",
+    "options": {
+      "look around": "look_around",
+      "shout": "shout"
+    }
+  },
+  "look_around": {
+    "text": "You see tall trees all around and hear rustling in the bushes. What next?",
+    "options": {
+      "approach bushes": "bushes",
+      "climb tree": "tree"
+    }
+  },
+  "shout": {
+    "text": "Your voice echoes through the forest. Nothing responds. What will you do?",
+    "options": {
+      "look around": "look_around",
+      "sit down": "sit"
+    }
+  },
+  "bushes": {
+    "text": "You find a small animal darting away. It looks like a rabbit. What next?",
+    "options": {
+      "follow rabbit": "rabbit",
+      "go back": "look_around"
+    }
+  },
+  "tree": {
+    "text": "You climb the tree and see a path leading out of the forest. What will you do?",
+    "options": {
+      "follow path": "path",
+      "climb down": "look_around"
+    }
+  }
+}
