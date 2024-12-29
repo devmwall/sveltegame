@@ -17,7 +17,7 @@
     "text": "Your voice echoes through the forest. Nothing responds. What will you do?",
     "options": {
       "look around": "look_around",
-      "sit down": "sit"
+      "sit down": "restart_path"
     }
   },
   "bushes": {
@@ -30,8 +30,20 @@
   "tree": {
     "text": "You climb the tree and see a path leading out of the forest. What will you do?",
     "options": {
-      "follow path": "path",
+      "follow path": "victory_path",
       "climb down": "look_around"
     }
+  },
+  "rabbit": {
+    "text": "The rabbit leads you deeper into the forest. You are lost!",
+    "restart": true
+  },
+  "victory_path": {
+    "text": "You follow the path and find your way out of the forest. You win!",
+    "victory": true
+  },
+  "restart_path": {
+    "text": "You sit down and soon fall asleep. When you wake up, you're back where you started.",
+    "restart": true
   }
 }

@@ -5,13 +5,25 @@
   let currentPath = "start";
   let storyText = paths[currentPath].text;
 
-  const handleInput = () => {
+  const handleInput = (event) => {
+    if(event.key != null && event.key !== 'Enter') {
+      return;
+    }
     const action = userInput.toLowerCase();
-    if (paths[currentPath].options[action]) {
-      currentPath = paths[currentPath].options[action];
-      storyText = paths[currentPath].text;
+    const nextPath = paths[currentPath].options[action];
+
+    if (nextPath) {
+      currentPath = nextPath;
+      if (paths[currentPath].restart) {
+        storyText = paths[currentPath].text;
+        currentPath = "start";
+      } else if (paths[currentPath].victory) {
+        storyText = paths[currentPath].text;
+      } else {
+        storyText = paths[currentPath].text;
+      }
     } else {
-      storyText = "Nothing happens. Try something else.";
+      storyText = `You ${userInput}.\r\n Nothing happens. Try something else.\r\n${paths[currentPath].text}`;
     }
     userInput = "";
   };
@@ -19,12 +31,16 @@
 
 <main>
   <h1>Word Adventure Game</h1>
-  <p>{storyText}</p>
+  <br/>
+  <br/>
+  <br/>
+  <pre>{storyText}</pre>
 
   <input 
     type="text" 
     bind:value={userInput} 
     placeholder="Type your action here" 
+    on:keydown={handleInput}
   />
   <button on:click={handleInput}>Submit</button>
 </main>
