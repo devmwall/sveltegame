@@ -1,16 +1,32 @@
+
 <script>
-  import paths from '../config.json';
+  import { onMount } from "svelte";
 
   let userInput = "";
   let currentPath = "start";
-  let storyText = paths[currentPath].text;
+  let storyText = 'Loading story....';
+  let paths = [];
+
+  const normalizeInput = (input) => {
+    return input.toLowerCase().trim().replace(/[^a-z0-9 ]/g, "");
+  };
+
+  const findPath = (action, options) => {
+    for (const [key, value] of Object.entries(options)) {
+      const aliases = key.split("|").map(alias => alias.trim());
+      if (aliases.includes(action)) {
+        return value;
+      }
+    }
+    return null;
+  };
 
   const handleInput = (event) => {
     if(event.key != null && event.key !== 'Enter') {
       return;
     }
-    const action = userInput.toLowerCase();
-    const nextPath = paths[currentPath].options[action];
+    const action = normalizeInput(userInput);
+    const nextPath = findPath(action, paths[currentPath].options);
 
     if (nextPath) {
       currentPath = nextPath;
@@ -27,6 +43,21 @@
     }
     userInput = "";
   };
+
+  const fetchPaths = async () => {
+    try {
+      const response = await fetch("http://localhost:8000"); // Replace with your API endpoint
+      paths = (await response.json());
+      storyText = paths[currentPath].text;
+    } catch (error) {
+      storyText = "Failed to load the game paths. Please try again later.";
+      console.error("Error fetching paths:", error);
+    }
+  };
+
+  onMount(() => {
+    fetchPaths();
+  });
 </script>
 
 <main>
