@@ -1,6 +1,9 @@
 ollamaApiConfig = 'localhost'
 ollamaPrompt = '''
-Create a JSON configuration file for a word-based adventure game. Make sure everything passed back is valid json.
+Create a JSON configuration file for a word-based adventure game. You should only return a valid json object.   
+
+Only return the json object. Do not include any other details or text. The first character will be '{' and the last character will be '}'
+
 Each path in the game should include:
 
     text: A description of the scenario the player encounters.
@@ -38,4 +41,10 @@ Ensure the JSON is structured and easy to modify. Example output:
     "text": "A sudden collapse traps you inside. You lose!",
     "restart": true
   }
-}'''
+}
+
+The above example is just an example. Use some creativity to design a scenario that someone might be on an adventure in. 
+It can vary in length but should be at least 3 steps to get to the end. 
+
+The most important thing, is it needs to be in the same format of the example. Otherwise it will not work at all.
+'''

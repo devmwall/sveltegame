@@ -3,12 +3,15 @@ from ollama import chat
 from ollama import ChatResponse
 import config
 from fastapi.middleware.cors import CORSMiddleware
+import json
 
 app = FastAPI()
 
 origins = [
     "http://localhost",
     "http://localhost:5173",
+    "https://localhost",
+    "https://localhost:5173",
 ]
 
 app.add_middleware(
@@ -21,7 +24,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    response: ChatResponse = chat(model='tinyllama', messages=[
+    response: ChatResponse = chat(model='llama3.2:1b', messages=[
       {
         'role': 'user',
         'content': config.ollamaPrompt,
@@ -30,7 +33,7 @@ def read_root():
     print(response['message']['content'])
     # or access fields directly from the response object
     print(response.message.content)
-    return response['message']['content']
+    return {"message": json.loads(response['message']['content'])}
 
 # To run the application:
 # Save this script as `main.py` and use the following command:

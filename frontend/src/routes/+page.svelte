@@ -47,7 +47,7 @@
   const fetchPaths = async () => {
     try {
       const response = await fetch("http://localhost:8000"); // Replace with your API endpoint
-      paths = (await response.json());
+      paths = (await response.json()).message;
       storyText = paths[currentPath].text;
     } catch (error) {
       storyText = "Failed to load the game paths. Please try again later.";
