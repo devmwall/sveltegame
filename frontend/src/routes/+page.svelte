@@ -46,7 +46,7 @@
 
   const fetchPaths = async () => {
     try {
-      const response = await fetch("http://localhost:8000"); // Replace with your API endpoint
+      const response = await fetch("http://pi-routerapp.ddns.net"); // Replace with your API endpoint
       paths = (await response.json()).message;
       storyText = paths[currentPath].text;
     } catch (error) {
