@@ -59,10 +59,14 @@ Example Structure:
 }
 
 Instructions:
-
     Be creative! Use themes like ancient temples, space exploration, or haunted houses.
     Ensure the JSON is well-structured and valid, starting with { and ending with }.
-    Do not include any extra text or explanations—only output the JSON object.
+
+IMPORTANT:
     The really important thing is to check the response multiple times to make sure it is valid json. 
     Check the json against yourself to ensure it can be parsed as json.
+    Do not include any extra text or explanations—only output the JSON object!!!!
+
+    I am going to be passing exactly what you respond with to a json parser.
+
 '''
