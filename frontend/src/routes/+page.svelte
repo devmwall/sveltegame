@@ -47,7 +47,7 @@
   const fetchPaths = async () => {
     try {
       const response = await fetch("https://pi-routerapp.ddns.net"); // Replace with your API endpoint
-      paths = (await response.json()).message;
+      paths = (await response.json()).message.paths;
       storyText = paths[currentPath].text;
     } catch (error) {
       storyText = "Failed to load the game paths. Please try again later.";
