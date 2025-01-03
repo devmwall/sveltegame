@@ -24,6 +24,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
+    print("Request incoming!");
     response: ChatResponse = chat(model='qwen2.5-coder:0.5b', messages=[
       {
         'role': 'user',
