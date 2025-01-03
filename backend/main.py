@@ -8,7 +8,7 @@ import json
 app = FastAPI()
 
 origins = [
-    "https://worldadventuregame.netlify.app/"
+    "https://pi-routerapp.ddns.net/"
 ]
 
 app.add_middleware(
