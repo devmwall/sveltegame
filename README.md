@@ -10,3 +10,7 @@ Simple word based adventure that will allow the users to travel the world and tr
 ## Setup of Ollama
 - curl -fsSL https://ollama.com/install.sh | sh
 - ollama run tinyllama
+curl http://localhost:11434/api/generate -d '{
+  "model": "llama3.2",
+  "prompt":"Why is the sky blue?"
+}'
