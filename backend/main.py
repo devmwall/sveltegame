@@ -9,9 +9,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost",
-    "http://localhost:5173",
-    "https://localhost",
-    "https://localhost:5173",
+    "http://localhost:5173"
 ]
 
 app.add_middleware(
@@ -25,13 +23,16 @@ app.add_middleware(
 @app.get("/")
 def read_root():
     print("Request incoming!");
-    response: ChatResponse = chat(model='qwen2.5-coder:0.5b', messages=[
+    response: ChatResponse = chat(model='llama3.2:1b', messages=[
       {
         'role': 'user',
         'content': config.ollamaPrompt,
       },
     ])
+
+   
     print(response['message']['content'])
+
     # or access fields directly from the response object
     print(response.message.content)
     return {"message": json.loads(response['message']['content'])}

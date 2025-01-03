@@ -1,52 +1,68 @@
 ollamaApiConfig = 'localhost'
 ollamaPrompt = '''
-Create a JSON object for a word-based adventure game. You should only return a valid json object.   
+Design an engaging adventure game using a JSON configuration.
 
-Only return the json object. Do not include any other details or text. DO NOT INCLUDE json at the start of the returned object.
+Your task is to create a JSON object that defines multiple paths for the player to explore. Each path must include:
 
-The first character will be '{' and the last character will be '}'
+    text: A detailed description of the scenario or challenge.
+    options: A set of possible actions the player can take, each mapped to the next path. Use aliases separated by | for each option.
 
-Each path in the game should include:
+Rules:
 
-    text: A description of the scenario the player encounters.
-    options: A set of possible actions the player can take, mapped to the next path. Each action can have multiple aliases separated by a pipe |.
-    Optional Properties:
-        restart: A boolean indicating if the path forces the player to restart.
-        victory: A boolean indicating if the path represents a victory condition.
+    At least 4 unique paths must be included.
+    Each option must link to another path (except for victory or restart scenarios).
+    Use optional properties like:
+        "restart": true for losing paths.
+        "victory": true for winning paths.
 
-Ensure the JSON is structured and easy to modify. Example output:
+Example Structure:
 
 {
-  "start": {
-    "text": "You find yourself at the edge of a mysterious cave. What will you do?",
-    "options": {
-      "enter cave|enter": "inside_cave",
-      "walk away|leave": "outside_cave"
+  "paths": {
+    "start": {
+      "text": "You are in a mysterious forest. A fork in the road lies ahead. What will you do?",
+      "options": {
+        "take left path|left": "river_crossing",
+        "take right path|right": "dark_cave"
+      }
+    },
+    "river_crossing": {
+      "text": "You reach a river. You can swim across or search for a bridge.",
+      "options": {
+        "swim across|swim": "treasure_room",
+        "search for bridge|bridge": "wolf_encounter"
+      }
+    },
+    "dark_cave": {
+      "text": "The cave is dark and eerie. You hear noises inside.",
+      "options": {
+        "venture deeper|venture": "treasure_room",
+        "exit cave|exit": "restart"
+      }
+    },
+    "wolf_encounter": {
+      "text": "A wolf blocks your path! You must fight or flee.",
+      "options": {
+        "fight wolf|fight": "treasure_room",
+        "flee|run": "restart"
+      }
+    },
+    "treasure_room": {
+      "text": "You discover a room filled with gold and jewels. You win!",
+      "victory": true
+    },
+    "restart": {
+      "text": "Your journey ends here. Restart your adventure.",
+      "restart": true
     }
-  },
-  "inside_cave": {
-    "text": "The cave is dark and damp. You see two tunnels ahead. What next?",
-    "options": {
-      "left tunnel|left": "left_tunnel",
-      "right tunnel|right": "right_tunnel"
-    }
-  },
-  "outside_cave": {
-    "text": "You walk away, leaving the cave unexplored.",
-    "restart": true
-  },
-  "left_tunnel": {
-    "text": "You find treasure hidden deep within the cave. You win!",
-    "victory": true
-  },
-  "right_tunnel": {
-    "text": "A sudden collapse traps you inside. You lose!",
-    "restart": true
   }
 }
 
-The above example is just an example. Use some creativity to design a scenario that someone might be on an adventure in. 
-It can vary in length but should be at least 3 steps to get to the end. 
+Instructions:
 
-The most important thing, is it needs to be in the same format of the example. Otherwise it will not work at all.
+    Be creative! Use themes like ancient temples, space exploration, or haunted houses.
+    Ensure the JSON is well-structured and valid, starting with { and ending with }.
+    Do not include any extra text or explanations—only output the JSON object.
+    The really important thing is to check the response multiple times to make sure it is valid json. 
+    Check the json against yourself to ensure it can be parsed as json.
 '''
