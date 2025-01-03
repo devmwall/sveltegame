@@ -32,6 +32,7 @@ def read_root():
     ])
     print(response['message']['content'])
     # or access fields directly from the response object
+    print(response.message.content)
     return {"message": json.loads(response['message']['content'])}
 
 # To run the application:

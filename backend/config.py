@@ -1,10 +1,8 @@
 ollamaApiConfig = 'localhost'
 ollamaPrompt = '''
-Create a JSON object for a word-based adventure game. You should only return a valid json object.   
+Create a JSON configuration file for a word-based adventure game. You should only return a valid json object.   
 
-Only return the json object. Do not include any other details or text. DO NOT INCLUDE json at the start of the returned object.
-
-The first character will be '{' and the last character will be '}'
+Only return the json object. Do not include any other details or text. The first character will be '{' and the last character will be '}'
 
 Each path in the game should include:
 
