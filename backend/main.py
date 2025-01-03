@@ -23,7 +23,7 @@ app.add_middleware(
 @app.get("/")
 def read_root():
     print("Request incoming!");
-    response: ChatResponse = chat(model='llama3.2:1b', messages=[
+    response: ChatResponse = chat(model='llama3.2:3b', messages=[
       {
         'role': 'user',
         'content': config.ollamaPrompt,
