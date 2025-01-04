@@ -4,7 +4,7 @@
 
   let userInput = "";
   let currentPath = "start";
-  let storyText = 'Loading story....';
+  let storyText = 'Loading story....this might take a few minutes....It\'s running on a raspberry pi';
   let paths = [];
 
   const normalizeInput = (input) => {
