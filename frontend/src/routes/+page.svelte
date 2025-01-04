@@ -62,6 +62,8 @@
 
 <main>
   <h1>Word Adventure Game</h1>
+  <p>This adventure game is AI generated running llama3.2:3b.</p>
+  <p>This was really the only smallish model that could generate correct json.</p>
   <br/>
   <br/>
   <br/>
