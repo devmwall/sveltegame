@@ -1,6 +1,7 @@
 
 <script>
   import { onMount } from "svelte";
+  import fallbackPaths from '../lib/fallback.json';
 
   let userInput = "";
   let currentPath = "start";
@@ -51,7 +52,10 @@
       storyText = paths[currentPath].text;
     } catch (error) {
       storyText = "Failed to load the game paths. Please try again later.";
-      console.error("Error fetching paths:", error);
+    }
+    finally{
+      paths = fallbackPaths.paths
+      storyText = "Server returned something invalid! Using a default path! \r\n" + paths[currentPath].text;
     }
   };
 

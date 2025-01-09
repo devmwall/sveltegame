@@ -1,0 +1,65 @@
+{
+  "paths": {
+    "start": {
+      "text": "You are on a spaceship exploring a new galaxy. You encounter an ancient temple with a mysterious door.",
+      "options": {
+        "open door|door": "temple_inner",
+        "ignore door|door": "spacewalk"
+      }
+    },
+    "temple_inner": {
+      "text": "You enter the temple and find a room filled with ancient artifacts. You can examine them or search for a hidden exit.",
+      "options": {
+        "examine artifacts|artifacts": "treasure_room",
+        "search for exit|exit": "trapped"
+      }
+    },
+    "spacewalk": {
+      "text": "You decide to go on a spacewalk and explore the galaxy. You see a strange planet with an atmosphere that's perfect for life.",
+      "options": {
+        "visit planet|planet": "alien_encounter",
+        "return ship|ship": "start"
+      }
+    },
+    "temple_inner_trapped": {
+      "text": "You are trapped in the temple and must find a way out. You can search for a hidden passage or try to escape.",
+      "options": {
+        "search for passage|passage": "hidden_room",
+        "escape|escape": "restart"
+      }
+    },
+    "treasure_room": {
+      "text": "You discover a room filled with ancient treasures and artifacts. You win!",
+      "victory": true
+    },
+    "alien_encounter": {
+      "text": "You encounter an alien species who are friendly but curious. They want to know about your planet.",
+      "options": {
+        "talk to aliens|aliens": "spacewalk",
+        "flee|run": "restart"
+      }
+    },
+    "hidden_room": {
+      "text": "You find a hidden room that contains a secret passage. You can follow it or return to the temple.",
+      "options": {
+        "follow passage|passage": "treasure_room",
+        "return to temple|temple": "temple_inner"
+      }
+    },
+    "trapped": {
+      "text": "You are trapped in a room and must find a way out. You can search for a hidden key or wait for rescue.",
+      "options": {
+        "search for key|key": "hidden_room",
+        "wait for rescue|rescue": "restart"
+      }
+    },
+    "alien_encounter_restart": {
+      "text": "Your encounter with the alien species ends in failure. Restart your adventure.",
+      "restart": true
+    },
+    "hidden_room_restart": {
+      "text": "You find a hidden room but it's not what you expected. Restart your adventure.",
+      "restart": true
+    }
+  }
+}
