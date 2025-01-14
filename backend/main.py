@@ -8,7 +8,9 @@ import json
 app = FastAPI()
 
 origins = [
-    "https://pi-routerapp.ddns.net/"
+    "https://pi-routerapp.ddns.net/",
+    "http://localhost:8000/",
+    
 ]
 
 app.add_middleware(

@@ -51,6 +51,7 @@
       paths = (await response.json()).message.paths;
       storyText = paths[currentPath].text;
     } catch (error) {
+      console.log(error);
       storyText = "Failed to load the game paths. Please try again later.";
     }
     finally{
