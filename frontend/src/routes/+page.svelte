@@ -52,9 +52,6 @@
       storyText = paths[currentPath].text;
     } catch (error) {
       console.log(error);
-      storyText = "Failed to load the game paths. Please try again later.";
-    }
-    finally{
       paths = fallbackPaths.paths
       storyText = "Server returned something invalid! Using a default path! \r\n" + paths[currentPath].text;
     }
